@@ -1,0 +1,25 @@
+=== CloudPhone Agent 使用说明（简化版）===
+
+前提：手机已 ROOT
+
+1. 下载安装
+   - 安装 MT管理器
+   - 安装 cloudphone-agent-service-arm64-v8a.apk
+
+2. 配置
+   - MT管理器 → 复制 agent.config 到 /sdcard/cloudphone/
+   - 编辑 agent.config，修改 AGENT_ID 和 SIGNALING
+
+3. 启动
+   - MT管理器 → 进入存放 start.sh 的目录
+   - 选中 start.sh → 属性 → 勾选"使用root权限执行"
+   - 点击 start.sh → 选"执行"
+
+4. 验证
+   - 通知栏出现"上云助手"即成功
+   - 重启手机自动启动
+
+=== 文件清单 ===
+apk  → 安装包
+agent.config  → 放到 /sdcard/cloudphone/
+start.sh  → 启动脚本（放到任意目录运行）

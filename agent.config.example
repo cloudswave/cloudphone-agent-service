@@ -1,0 +1,12 @@
+# CloudPhone Agent 配置文件
+# 存放路径: /sdcard/cloudphone/agent.config
+# 应用启动后自动读取此文件，15秒轮询变化自动重启
+#
+# 格式说明:
+#   AGENT_ID    - 设备标识（必填），用于在信令服务器上注册设备
+#   SIGNALING   - 信令服务器地址（必填），ws:// 或 wss:// 开头
+#   ICE_SERVERS - ICE/TURN 服务器地址（可选），多个用逗号分隔
+
+AGENT_ID='my-device-001'
+SIGNALING='ws://192.168.1.100:8080'
+ICE_SERVERS='turn:turn.example.com:3478?transport=tcp'
