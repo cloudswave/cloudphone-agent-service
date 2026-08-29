@@ -63,9 +63,15 @@ download() {
 # ---------- 3. 确保目录 ----------
 mkdir -p "$DIR"
 
-# ---------- 4. 检测 APK 是否已安装 ----------
+# ---------- 4. 检测 APK 是否已安装【修复：兼容\r换行、高版本Android】 ----------
 IS_INSTALLED=0
-pm list packages 2>/dev/null | grep -q "^package:$PKG$" && IS_INSTALLED=1
+if pm list packages 2>/dev/null | tr -d '\r' | grep -q "package:${PKG}"; then
+    IS_INSTALLED=1
+fi
+# dumpsys 兜底校验，pm list 被限制时也能识别
+if [ "$IS_INSTALLED" = "0" ]; then
+    dumpsys package "$PKG" >/dev/null 2>&1 && IS_INSTALLED=1
+fi
 
 if [ "$IS_INSTALLED" = "1" ]; then
     echo ">> APK 已安装，跳过下载安装"
